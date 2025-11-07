@@ -26,9 +26,6 @@ RUN wget -P /opt/flink/lib/ https://jdbc.postgresql.org/download/postgresql-42.6
 # Создаем директорию для пользовательских JAR файлов если не существует
 RUN mkdir -p /opt/flink/usrlib
 
-# Скрипт для запуска job
-COPY start-job.sh /opt/flink/
-RUN chmod +x /opt/flink/start-job.sh
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
