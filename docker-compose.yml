@@ -45,15 +45,15 @@ services:
       - bigdata-network
 
 
-#  kafka-producer:
-#    build: ./kafka-producer
-#    container_name: kafka-producer
-#    depends_on:
-#      - kafka
-#    environment:
-#      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
-#    networks:
-#      - bigdata-network
+  kafka-producer:
+    build: ./kafka-producer
+    container_name: kafka-producer
+    depends_on:
+      - kafka
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+    networks:
+      - bigdata-network
 
   db:
     image: postgres:15
@@ -71,7 +71,6 @@ services:
     volumes:
      - postgresdata:/var/lib/postgresql/data
      - ./init:/docker-entrypoint-initdb.d
-#     - ./data:/tmp/data
     ports:
      - 5432:5432
     networks:
